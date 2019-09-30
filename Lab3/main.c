@@ -1,4 +1,5 @@
 #include "msp.h"
+#include "src/TimerA0int.c"
 
 #ifndef PWM_H_
 #define PWM_H_
@@ -49,7 +50,7 @@ void main(void){
 
 	config_pwm_gpio();
 	config_pwm_timer();
-	start_pwm(50);
+	start_pwm(100);
 
 /*
 	P2DIR |= 0x10;
