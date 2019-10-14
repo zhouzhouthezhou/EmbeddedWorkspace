@@ -39,16 +39,15 @@ void config_pwm_gpio(void){
 ////////////////////////////////////////////////////////////////////////////////
 void timerA0_config(float period){
     TA0R = 0x0;
-    TA0CTL = TASSEL_2 + MC_1 + ID__4;
-    TA0CCTL0 = OUTMOD_3 + CCIE; //set compare mode, output mode, interrupt flag
-    TA0CCR0 = ((3000000/4)*(0.05));
-    __NVIC_SetPriority(TA0_0_IRQn, 2);
-    __NVIC_EnableIRQ(TA0_0_IRQn);
-    __enable_irq();
+    TA0CTL = TASSEL_2 + MC_1 + ID__8 + TAIE;
+    TA0CCTL0 = OUTMOD_7 + CCIE; //set compare mode, output mode, interrupt flag
+    TA0CCR0 = ((3000000/8)*(0.025));
+    __NVIC_SetPriority(TA0_N_IRQn, 2);
+    __NVIC_EnableIRQ(TA0_N_IRQn);
 }
 
-void TA0_0_IRQHandler(void){
+void TA0_N_IRQHandler(void){
     flag = 1;
-    printf("help");
+    TA0CTL &= ~TIMER_A_CTL_IFG;
 }
 

@@ -8,7 +8,7 @@ void start_pwm(uint8_t duty_cycle);
 void stop_pwm(void);
 void timerA0_config(float period);
 void timerA0_IRQHandler(void);
-volatile static int flag;
+volatile int flag;
 
 void __NVIC_EnableIRQ(IRQn_Type IRQn);
 

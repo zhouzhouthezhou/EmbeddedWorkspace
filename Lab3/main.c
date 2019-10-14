@@ -26,17 +26,15 @@ void main(void){
 
 
 	P2DIR |= 0x1;
+	P2SEL0 = 0;
+	P2SEL1 = 0;
 	int isUp = 0;
+
+	__enable_irq();
 
 	while(1){
 	    if(flag == 1){
-	        if(isUp){
-	            P2OUT &= 0x00;
-	            isUp = 0;
-	        }else{
-	            P2OUT |= 0x1;
-	            isUp = 1;
-	        }
+	        P2OUT ^= BIT0;
 	        flag = 0;
 	    }
 	}
