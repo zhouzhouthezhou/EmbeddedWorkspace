@@ -22,11 +22,22 @@ void part1(){
 void main(void){
 	WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
 
-	timerA0_config(150000);
+	timerA0_config(0.05);
+
+
+	P2DIR |= 0x1;
+	int isUp = 0;
 
 	while(1){
 	    if(flag == 1){
-
+	        if(isUp){
+	            P2OUT &= 0x00;
+	            isUp = 0;
+	        }else{
+	            P2OUT |= 0x1;
+	            isUp = 1;
+	        }
+	        flag = 0;
 	    }
 	}
 }
