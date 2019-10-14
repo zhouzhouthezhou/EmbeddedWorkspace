@@ -31,7 +31,7 @@ void config_pwm_timer(void){
  * @param uint8_t duty_cycle: 0-100, percentage of time ON */
 void start_pwm(uint8_t duty_cycle){
     int ccr0 = 30;
-    TA0CCR0 = ccr0; //freq = sysclk/ccr0; 1MHZ/10 = 100kHz
+    TA0CCR0 = ccr0; //freq = sysclk/ccr0; 3MHZ/30 = 100kHz
     TA0CCR1 = 0.01 * (duty_cycle) * ccr0;
 }
 /* Stop Mode: clear all Mode Control bits, MC, in TAxCTL register */
