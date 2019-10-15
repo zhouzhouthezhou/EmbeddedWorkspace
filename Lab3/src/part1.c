@@ -1,15 +1,13 @@
-#include "msp.h"
-#include "TIMERA0INT.h"
-
-//#ifdef TIMERA0INT
-//#define TIMERA0INT
-//#endif
-
 /*
- * - TODO: reset R (timer counter) register
- * - TODO: select SMCLK (3MHz) in the CTL register
- * - TODO: select reset/set output mode for T0.1 timer using CCTL[1]
+ * part1.c
+ *
+ *  Created on: Oct 14, 2019
+ *      Author: kylez
  */
+#include "msp.h"
+#include "part1.h"
+
+
 void config_pwm_timer(void){
     TA0R = 0x0;
 	TA0CTL = TASSEL_2 + MC_1;
@@ -22,9 +20,10 @@ void config_pwm_timer(void){
  *  - TODO: Counting and then reset
  * @param uint8_t duty_cycle: 0-100, percentage of time ON */
 void start_pwm(uint8_t duty_cycle){
-    int ccr0 = 30;
+    int ccr0 = 29;
     TA0CCR0 = ccr0; //freq = sysclk/ccr0; 3MHZ/30 = 100kHz
-    TA0CCR1 = 0.01 * (duty_cycle) * ccr0;
+//    TA0CCR1 = 0.01 * (duty_cycle) * ccr0;
+    TA0CCR1 = ccr0;
 }
 /* Stop Mode: clear all Mode Control bits, MC, in TAxCTL register */
 void stop_pwm(void){
@@ -35,19 +34,5 @@ void config_pwm_gpio(void){
 	P2DIR |= 0x10;
 	P2SEL0 |= 0x10;
 	P2SEL1 &= ~0x10;
-}
-////////////////////////////////////////////////////////////////////////////////
-void timerA0_config(float period){
-    TA0R = 0x0;
-    TA0CTL = TASSEL_2 + MC_1 + ID__8 + TAIE;
-    TA0CCTL0 = OUTMOD_7 + CCIE; //set compare mode, output mode, interrupt flag
-    TA0CCR0 = ((3000000/8)*(0.025));
-    __NVIC_SetPriority(TA0_N_IRQn, 2);
-    __NVIC_EnableIRQ(TA0_N_IRQn);
-}
-
-void TA0_N_IRQHandler(void){
-    flag = 1;
-    TA0CTL &= ~TIMER_A_CTL_IFG;
 }
 
