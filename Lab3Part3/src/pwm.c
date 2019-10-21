@@ -21,4 +21,3 @@ void TA0_N_IRQHandler(void){
     flag = 1;
     TA0CTL &= ~TIMER_A_CTL_IFG;
 }
-
