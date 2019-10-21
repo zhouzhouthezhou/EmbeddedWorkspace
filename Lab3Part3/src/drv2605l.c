@@ -22,7 +22,7 @@ void config_drv2605L() {
     write_register(DRV2605L, MODE, 0);// come out of STBY
     write_register(DRV2605L, MODE, MODE_PWM);   // set MODE to 3
     write_register(DRV2605L, CONTROL3, MODE_PWM);   // set CONTROL3 to PWM
-    write_register(DRV2605L, CONTROL3, LIBRARY);// select LRA library
+    write_register(DRV2605L, LIBRARY, 0x06);// select LRA library
 
     mode_reg = read_register(DRV2605L, MODE);
     if(mode_reg != (MODE_PWM)) {
