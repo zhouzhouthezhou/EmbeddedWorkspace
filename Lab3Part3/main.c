@@ -12,6 +12,7 @@ void main(void)
 {
 	WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
 	config_i2c();
+
 	config_drv2605L();
 
     P2DIR |= 0x1;
@@ -27,6 +28,7 @@ void main(void)
 	        flag = 0;
 	    }
 	}
+
 
 //    while(1){
 //        if(flag == 1){
