@@ -9,8 +9,13 @@
 #include "msp.h"
 
 void config_drv_gpio(){
-    P5DIR |= 0x5;
+    P5DIR |= BIT0 + BIT2;
     P5SEL0 = 0;
     P5SEL1 = 0;
     P5OUT |= BIT0 + BIT2;
+
+    P2DIR |= 0x1;
+    P2SEL0 = 0;
+    P2SEL1 = 0;
+    P2OUT = 0x1;
 }

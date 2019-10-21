@@ -7,6 +7,7 @@
 #include "pwm.h"
 #include "msp.h"
 
+
 void timerA0_config(float period){
     TA0R = 0x0;
     TA0CTL = TASSEL_2 + MC_1 + ID__8 + TAIE;
@@ -21,4 +22,3 @@ void TA0_N_IRQHandler(void){
     flag = 1;
     TA0CTL &= ~TIMER_A_CTL_IFG;
 }
-
