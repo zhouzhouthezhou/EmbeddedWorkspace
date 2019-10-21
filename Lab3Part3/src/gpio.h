@@ -5,11 +5,10 @@
  *      Author: kylez
  */
 
-#ifndef SRC_PART2_H_
-#define SRC_PART2_H_
+#ifndef GPIO_H_
+#define GPIO_H_
 
-void timerA0_config(float period);
-void timerA0_IRQHandler(void);
-volatile int flag;
+
+void config_drv_gpio();
 
 #endif /* SRC_PART2_H_ */

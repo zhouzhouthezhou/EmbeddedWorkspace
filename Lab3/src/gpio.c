@@ -4,7 +4,7 @@
  *  Created on: Oct 14, 2019
  *      Author: kylez
  */
-#include <gpio.h>
+#include "gpio.h"
 #include "msp.h"
 
 void timerA0_config(float period){

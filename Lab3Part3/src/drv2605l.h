@@ -12,6 +12,6 @@
 #define MODE        0x01
 #define CONTROL3    0x1D
 
-void config_drv2605L(void (*toggle_routine)());
+void config_drv2605L();
 
 #endif /* DRV2605L_H_ */
