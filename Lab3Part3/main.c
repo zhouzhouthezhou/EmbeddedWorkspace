@@ -13,7 +13,7 @@ void main(void)
 	WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
 	config_drv2605L();
 	config_i2c();
-    timerA0_config(0.00001);
+    timerA0_config(0.001);
 
 
 
