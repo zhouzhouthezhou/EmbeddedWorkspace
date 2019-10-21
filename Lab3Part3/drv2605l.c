@@ -20,7 +20,7 @@ void config_drv2605L(void (*toggle_routine)()) {
     uint8_t mode_reg, control_three_reg;
     for (i = 0; i < 100000; i++);
 
-    // come out of STBY
+    write_register(DRV2605L, MODE, 0);// come out of STBY
     write_register(DRV2605L, MODE, MODE_PWM);   // set MODE to 3
     write_register(DRV2605L, CONTROL3, MODE_PWM);   // set CONTROL3 to PWM
     // select LRA library
