@@ -4,8 +4,8 @@
  *  Created on: Oct 14, 2019
  *      Author: kylez
  */
+#include <gpio.h>
 #include "msp.h"
-#include "part2.h"
 
 void timerA0_config(float period){
     TA0R = 0x0;
